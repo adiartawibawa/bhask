@@ -1,60 +1,107 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('layouts.guest')
 
-        <x-jet-validation-errors class="mb-4" />
+@section('content')
+    <section class="section">
+        <div class="d-flex flex-wrap align-items-stretch">
+            <div class="col-lg-4 col-md-6 col-12 order-lg-2 min-vh-100 order-1 bg-white">
+                <div class="p-4 m-3">
+                    <div class="text-center">
+                        <img src="./images/logo.png" alt="logo" width="80"
+                        class="mt-2 mb-5">
+                    </div>
+                    <h4 class="text-dark font-weight-normal">Welcome to <span
+                            class="font-weight-bold">{{ config('app.name') }}</span></h4>
+                    <p class="text-muted">You must registered to get started</p>
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+                    @if (session('status'))
+                        <div class="mb-4 font-medium text-sm text-green-600">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            </div>
+                    <form method="POST" action="{{ route('register') }}" class="needs-validation" novalidate="">
+                        @csrf
 
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
+                        <div class="form-group">
+                            <label for="name">{{ __('Name') }}</label>
+                            <input id="name" type="text" class="form-control" name="name" :value="old('name')" required
+                                autofocus autocomplete="name" />
+                            <div class="invalid-feedback">
+                                Please fill in your name
                             </div>
                         </div>
-                    </x-jet-label>
+
+                        <div class="form-group">
+                            <label for="email">{{ __('Email') }}</label>
+                            <input id="email" type="email" class="form-control" name="email" :value="old('email')"
+                                required>
+                            <div class="invalid-feedback">
+                                Please fill in your email
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="d-block">{{ __('Password') }}</label>
+                            <input id="password" type="password" class="form-control pwstrength"
+                                data-indicator="pwindicator" name="password" required autocomplete="new-password">
+                            <div id="pwindicator" class="pwindicator">
+                                <div class="bar"></div>
+                                <div class="label"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password_confirmation" class="d-block">{{ __('Confirm Password') }}</label>
+                            <input id="password_confirmation" type="password" class="form-control"
+                                name="password_confirmation" required autocomplete="new-password">
+                        </div>
+
+                        <div class="form-group text-small">
+                            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="terms" id="terms">
+                                    <label class="custom-control-label" for="terms">
+                                        {!! __('I agree to the :terms_of_service and :privacy_policy', [
+    'terms_of_service' => '<a target="_blank" href="' . route('terms.show') . '" >' . __('Terms of Service') . '</a>',
+    'privacy_policy' => '<a target="_blank" href="' . route('policy.show') . '" >' . __('Privacy Policy') . '</a>',
+]) !!}
+                                    </label>
+                                </div>
+                            @endif
+                        </div>
+
+                        <div class="form-group text-right">
+                            <div class="float-left mt-3">
+                                <a href="{{ route('login') }}"> Already registered ? </a>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg btn-icon icon-right" tabindex="4">
+                                {{ __('Register Me') }}
+                            </button>
+                        </div>
+
+                    </form>
+
+                    <div class="text-center text-small">
+                        Copyright &copy; {{ config('app.name') }}. Made with 💙 by {{ config('app.creator') }}
+                    </div>
+
                 </div>
-            @endif
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
             </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+            <div class="col-lg-8 col-12 order-lg-1 order-2 min-vh-100 background-walk-y position-relative overlay-gradient-bottom"
+                data-background="{{ asset('./images/register.jpg') }}">
+                <div class="absolute-bottom-left index-2">
+                    <div class="text-light p-5 pb-2">
+                        <div class="mb-5 pb-3">
+                            <h1 class="mb-2 display-4 font-weight-bold">Nice you here, fellas!</h1>
+                            <h5 class="font-weight-normal text-muted-transparent">Bali, Indonesia</h5>
+                        </div>
+                        Photo by <a class="text-light bb" target="_blank"
+                            href="https://unsplash.com/photos/rf5R1qXwlDU">Silas Baisch</a> on <a class="text-light bb"
+                            target="_blank" href="https://unsplash.com">Unsplash</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection

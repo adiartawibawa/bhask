@@ -5,16 +5,16 @@ $links = [
         'text' => 'Dashboard',
         'is_multi' => false,
     ],
-    [
-        'href' => [
-            [
-                'section_text' => 'User',
-                'section_list' => [['href' => 'user', 'text' => 'Data User'], ['href' => 'user.new', 'text' => 'Buat User']],
-            ],
-        ],
-        'text' => 'User',
-        'is_multi' => true,
-    ],
+    // [
+    //     'href' => [
+    //         [
+    //             'section_text' => 'User',
+    //             'section_list' => [['href' => 'user', 'text' => 'Data User'], ['href' => 'user.new', 'text' => 'Buat User']],
+    //         ],
+    //     ],
+    //     'text' => 'User',
+    //     'is_multi' => true,
+    // ],
 ];
 $navigation_links = array_to_object($links);
 @endphp
@@ -45,7 +45,7 @@ $navigation_links = array_to_object($links);
                                     return Request::routeIs($child->href);
                                 })
                                 ->toArray();
-                            
+
                             $is_active = in_array(true, $routes);
                         @endphp
 

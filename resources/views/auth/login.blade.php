@@ -6,7 +6,7 @@
             <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                 <div class="p-4 m-3">
                     <div class="text-center">
-                        <img src="/images/logo.png" alt="logo" width="80"
+                        <img src="./images/logo.png" alt="logo" width="80"
                         class="mt-2 mb-5">
                     </div>
 
