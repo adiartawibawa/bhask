@@ -14,29 +14,31 @@
     </form>
     <ul class="navbar-nav navbar-right">
         <li class="dropdown">
-                <a href="#" data-turbolinks="false" data-toggle="dropdown" class="d-flex align-items-center nav-link dropdown-toggle nav-link-lg nav-link-user">
-            @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
+            <a href="#" data-turbolinks="false" data-toggle="dropdown"
+                class="d-flex align-items-center nav-link dropdown-toggle nav-link-lg nav-link-user">
+                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                    <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
                         class="rounded-circle mr-1">
-            @else
-                <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div>
-            @endif
+                @else
+                    <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div>
+                @endif
             </a>
-            
+
             <div class="dropdown-menu dropdown-menu-right">
                 <a href="/user/profile" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
                 @if (request()->get('is_admin'))
-                <a href="/setting" class="dropdown-item has-icon">
-                    <i class="fas fa-cog"></i> Setting
-                </a>
+                    <a href="/setting" class="dropdown-item has-icon">
+                        <i class="fas fa-cog"></i> Setting
+                    </a>
                 @endif
                 <div class="dropdown-divider"></div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
-                    <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger" onclick="event.preventDefault();this.closest('form').submit();">
+                    <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger"
+                        onclick="event.preventDefault();this.closest('form').submit();">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </form>

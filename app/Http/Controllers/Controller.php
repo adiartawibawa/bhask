@@ -10,4 +10,12 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected $data = [];
+    protected $perPage = 10;
+
+    public function __construct()
+    {
+        $this->data['currentAdminMenu'] = '';
+    }
 }
