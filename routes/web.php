@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\DashboardController as AdminDashboard;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,5 +20,5 @@ Route::get('/', function () {
 });
 
 Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
-    Route::view('/dashboard', "dashboard")->name('dashboard');
+    Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
 });

@@ -178,7 +178,9 @@ return [
         /*
          * Package Service Providers...
          */
+        App\Providers\AdminRepositoryServiceProvider::class,
         browner12\helpers\HelperServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Application Service Providers...
