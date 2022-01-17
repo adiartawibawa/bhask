@@ -15,7 +15,8 @@ $activeClass = 'active';
 
         <ul class="sidebar-menu">
             <li class="{{ $currentAdminMenu == 'dashboard' ? $activeClass : '' }}"><a class="nav-link"
-                    href="{{ url('/dashboard') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a></li>
+                    href="{{ route('admin.dashboard') }}"><i class="fas fa-fire"></i> <span>Dashboard</span></a>
+            </li>
             @foreach ($moduleAdminMenus as $moduleAdminMenu)
                 <li class="menu-header">{{ $moduleAdminMenu['module'] }}</li>
                 @foreach ($moduleAdminMenu['admin_menus'] as $moduleMenu)
@@ -40,7 +41,7 @@ $activeClass = 'active';
             <li class="menu-header">@lang('general.menu_setting_label')</li>
             @if (auth()->user()->hasRole(\App\Models\Role::ADMIN))
                 <li class="{{ $currentAdminMenu == 'settings' ? $activeClass : '' }}"><a class="nav-link"
-                        href="{{ url('settings') }}"><i class="fas fa-cogs"></i>
+                        href="{{ route('settings.update') }}"><i class="fas fa-cogs"></i>
                         <span>@lang('settings.menu_settings_label')</span></a></li>
             @endif
         </ul>

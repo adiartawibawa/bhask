@@ -1,44 +1,13 @@
-@extends('layouts.admin.dashboard')
-
-@push('styles')
-
-@endpush
-
-@section('page-title')
-    <h1>{{ __('Dashboard') }}</h1>
-@endsection
-
-@section('breadcrumbs')
-    {{ Breadcrumbs::render('dashboard') }}
-@endsection
-
-@section('contents')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-                        {{ __('You are logged in!') }}
-                    </div>
-                </div>
-            </div>
+<x-app-layout>
+    <x-slot name="header_content">
+        <h1>Dashboard</h1>
+        <div class="section-header-breadcrumb">
+            {{ Breadcrumbs::render('dashboard') }}
         </div>
+    </x-slot>
+
+    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+        <x-jet-welcome />
     </div>
-@endsection
-
-@section('modals')
-
-@endsection
-
-
-@push('scripts')
-
-@endpush
+    
+</x-app-layout>
