@@ -30,17 +30,17 @@ $activeClass = 'active';
             <li class="menu-header">@lang('general.menu_account_label')</li>
             @can('view_users')
                 <li class="{{ $currentAdminMenu == 'users' ? $activeClass : '' }}"><a class="nav-link"
-                        href="{{ url('admin/users') }}"><i class="fas fa-user"></i> <span>Users</span></a></li>
+                        href="{{ url('users') }}"><i class="fas fa-user"></i> <span>Users</span></a></li>
             @endcan
             @can('view_roles')
                 <li class="{{ $currentAdminMenu == 'roles' ? $activeClass : '' }}"><a class="nav-link"
-                        href="{{ url('admin/roles') }}"><i class="fas fa-lock"></i>
+                        href="{{ url('roles') }}"><i class="fas fa-lock"></i>
                         <span>@lang('roles.menu_role_label')</span></a></li>
             @endcan
             <li class="menu-header">@lang('general.menu_setting_label')</li>
             @if (auth()->user()->hasRole(\App\Models\Role::ADMIN))
                 <li class="{{ $currentAdminMenu == 'settings' ? $activeClass : '' }}"><a class="nav-link"
-                        href="{{ url('admin/settings') }}"><i class="fas fa-cogs"></i>
+                        href="{{ url('settings') }}"><i class="fas fa-cogs"></i>
                         <span>@lang('settings.menu_settings_label')</span></a></li>
             @endif
         </ul>

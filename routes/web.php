@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\RoleController as AdminRole;
+use App\Http\Controllers\Admin\UserController as AdminUser;
+use App\Http\Controllers\Admin\SettingController as AdminSetting;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +20,13 @@ use App\Http\Controllers\DashboardController as AdminDashboard;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
     Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+
+    Route::get('settings/remove/{id}', [AdminSetting::class, 'remove'])->name('settings.update');
+    Route::get('settings', [AdminSetting::class, 'index'])->name('settings.update');
+    Route::post('settings', [AdminSetting::class, 'update'])->name('settings.update');
+
 });
