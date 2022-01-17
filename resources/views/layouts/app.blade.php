@@ -5,10 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-<<<<<<< HEAD
-=======
-    <link rel="shortcut icon" type="image/png" href="/images/logo.png" />
->>>>>>> f94589f08289e86c7d18179c7283257263099723
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 

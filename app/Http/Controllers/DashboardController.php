@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class DashboardController extends Controller
 {
@@ -14,8 +15,10 @@ class DashboardController extends Controller
 
     public function index()
     {
-        $this->data['currentAdminMenu'] = 'dashboard';
+        $this->data['currentAdminMenu']  = 'dashboard';
 
-        return view('dashboard')->with($this->data);
+        View::share($this->data);
+
+        return view('dashboard');
     }
 }
