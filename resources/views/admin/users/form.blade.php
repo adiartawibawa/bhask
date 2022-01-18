@@ -1,22 +1,14 @@
-@extends('layouts.admin.dashboard')
-
-@push('styles')
-
-@endpush
-
-@section('page-title')
-    <h1>@lang('users.user_management')</h1>
-@endsection
-
-@section('breadcrumbs')
-    @if (empty($user))
-        {{ Breadcrumbs::render('user-create') }}
-    @else
-        {{ Breadcrumbs::render('user-show', $user) }}
-    @endif
-@endsection
-
-@section('contents')
+<x-app-layout>
+    <x-slot name="header_content">
+        <h1>Dashboard</h1>
+        <div class="section-header-breadcrumb">
+            @if (empty($user))
+                {{ Breadcrumbs::render('user-create') }}
+            @else
+                {{ Breadcrumbs::render('user-show', $user) }}
+            @endif
+        </div>
+    </x-slot>
     <div>
         @if (empty($user))
             <form method="POST" action="{{ route('users.store') }}">
@@ -35,7 +27,7 @@
                             <h4>{{ empty($user) ? __('users.add_card_title') : __('users.update_card_title') }}</h4>
                         </div>
                         <div class="card-body">
-                            @include('layouts.admin.shared.flash')
+                            {{-- @include('layouts.admin.shared.flash') --}}
                             <div class="form-group">
                                 <label>@lang('users.name_label')</label>
                                 <input type="text" name="name"
@@ -117,4 +109,4 @@
         </div>
         </form>
     </div>
-@endsection
+</x-app-layout>

@@ -31,11 +31,11 @@ $activeClass = 'active';
             <li class="menu-header">@lang('general.menu_account_label')</li>
             @can('view_users')
                 <li class="{{ $currentAdminMenu == 'users' ? $activeClass : '' }}"><a class="nav-link"
-                        href="{{ url('users') }}"><i class="fas fa-user"></i> <span>Users</span></a></li>
+                        href="{{ route('users.index') }}"><i class="fas fa-user"></i> <span>Users</span></a></li>
             @endcan
             @can('view_roles')
                 <li class="{{ $currentAdminMenu == 'roles' ? $activeClass : '' }}"><a class="nav-link"
-                        href="{{ url('roles') }}"><i class="fas fa-lock"></i>
+                        href="{{ route('roles.index') }}"><i class="fas fa-lock"></i>
                         <span>@lang('roles.menu_role_label')</span></a></li>
             @endcan
             <li class="menu-header">@lang('general.menu_setting_label')</li>

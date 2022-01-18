@@ -1,18 +1,11 @@
-@extends('layouts.admin.dashboard')
+<x-app-layout>
+    <x-slot name="header_content">
+        <h1>Dashboard</h1>
+        <div class="section-header-breadcrumb">
+            {{ Breadcrumbs::render('settings') }}
+        </div>
+    </x-slot>
 
-@push('styles')
-
-@endpush
-
-@section('page-title')
-    <h1>@lang('users.user_management')</h1>
-@endsection
-
-@section('breadcrumbs')
-    {{ Breadcrumbs::render('users') }}
-@endsection
-
-@section('contents')
     <div>
         <h2 class="section-title">@lang('users.user_list')</h2>
         <div class="row">
@@ -22,7 +15,7 @@
                         <h4>@lang('users.user_management')</h4>
                     </div>
                     <div class="card-body">
-                        @include('layouts.admin.shared.flash')
+                        {{-- @include('layouts.admin.shared.flash') --}}
                         @include('admin.users._filter')
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-md">
@@ -57,11 +50,12 @@
 
                                                     @can('delete_users')
                                                         <a href="{{ url('admin/users/' . $user->id) }}"
-                                                            class="btn btn-sm btn-danger" onclick="
-                                                                                                                            event.preventDefault();
-                                                                                                                            if (confirm('Do you want to remove this?')) {
-                                                                                                                                document.getElementById('delete-role-{{ $user->id }}').submit();
-                                                                                                                            }">
+                                                            class="btn btn-sm btn-danger"
+                                                            onclick="
+                                                                                                                                    event.preventDefault();
+                                                                                                                                    if (confirm('Do you want to remove this?')) {
+                                                                                                                                        document.getElementById('delete-role-{{ $user->id }}').submit();
+                                                                                                                                    }">
                                                             <i class="far fa-trash-alt"></i>
                                                             @lang('general.btn_delete_label')
                                                         </a>
@@ -86,4 +80,5 @@
             </div>
         </div>
     </div>
-@endsection
+
+</x-app-layout>

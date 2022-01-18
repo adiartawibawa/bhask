@@ -2,7 +2,7 @@
     <x-slot name="header_content">
         <h1>Dashboard</h1>
         <div class="section-header-breadcrumb">
-            {{ Breadcrumbs::render('settings') }}
+            {{ Breadcrumbs::render('users') }}
         </div>
     </x-slot>
 
@@ -25,7 +25,8 @@
                                     @php
                                         $activeClass = $category == $currentCategory ? 'active' : '';
                                     @endphp
-                                    <li class="nav-item"><a href="{{ url('admin/settings?category=' . $category) }}"
+                                    <li class="nav-item"><a
+                                            href="{{ url('admin/settings?category=' . $category) }}"
                                             class="nav-link {{ $activeClass }}">{{ ucwords($category) }}</a></li>
                                 @endforeach
                             </ul>

@@ -28,5 +28,16 @@ Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
         Route::get('settings/remove/{id}', [AdminSetting::class, 'remove'])->name('settings.update');
         Route::get('settings', [AdminSetting::class, 'index'])->name('settings.update');
         Route::post('settings', [AdminSetting::class, 'update'])->name('settings.update');
+
+        // Roles and Permissions 
+        Route::get('roles/reload-permissions/{id}', [AdminRole::class, 'reloadPermissions'])->name('roles.update');
+        Route::get('roles/reload-permissions', [AdminRole::class, 'reloadPermissions'])->name('roles.update');
+        Route::resource('roles', AdminRole::class);
+
+        // Users 
+        Route::resource('users', AdminUser::class);
+
+        // Profiles 
+        Route::get('/profile', [UserProfileController::class, 'show'])->name('profile.show');
     });
 });

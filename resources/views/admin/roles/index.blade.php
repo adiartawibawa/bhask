@@ -1,18 +1,11 @@
-@extends('layouts.admin.dashboard')
+<x-app-layout>
+    <x-slot name="header_content">
+        <h1>Dashboard</h1>
+        <div class="section-header-breadcrumb">
+            {{ Breadcrumbs::render('roles') }}
+        </div>
+    </x-slot>
 
-@push('styles')
-
-@endpush
-
-@section('page-title')
-    <h1>@lang('roles.role_management')</h1>
-@endsection
-
-@section('breadcrumbs')
-    {{ Breadcrumbs::render('roles') }}
-@endsection
-
-@section('contents')
     <div>
         <h2 class="section-title">@lang('roles.role_list')</h2>
         <div class="row">
@@ -22,7 +15,7 @@
                         <h4>@lang('roles.role_management')</h4>
                     </div>
                     <div class="card-body">
-                        @include('layouts.admin.shared.flash')
+                        {{-- @include('layouts.admin.shared.flash') --}}
                         @include('admin.roles._filter')
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped table-md">
@@ -61,13 +54,5 @@
             </div>
         </div>
     </div>
-@endsection
 
-@section('modals')
-
-@endsection
-
-
-@push('scripts')
-
-@endpush
+</x-app-layout>

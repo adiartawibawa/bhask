@@ -1,22 +1,15 @@
-@extends('layouts.admin.dashboard')
+<x-app-layout>
+    <x-slot name="header_content">
+        <h1>Dashboard</h1>
+        <div class="section-header-breadcrumb">
+            @if (empty($role))
+                {{ Breadcrumbs::render('role-create') }}
+            @else
+                {{ Breadcrumbs::render('role-show', $role) }}
+            @endif
+        </div>
+    </x-slot>
 
-@push('styles')
-
-@endpush
-
-@section('page-title')
-    <h1>@lang('roles.role_management')</h1>
-@endsection
-
-@section('breadcrumbs')
-    @if (empty($role))
-        {{ Breadcrumbs::render('role-create') }}
-    @else
-        {{ Breadcrumbs::render('role-show', $role) }}
-    @endif
-@endsection
-
-@section('contents')
     <div>
         @if (empty($role))
             <form method="POST" action="{{ url('admin/roles') }}">
@@ -35,12 +28,13 @@
                             <h4>{{ empty($role) ? __('roles.add_card_title') : __('roles.update_card_title') }}</h4>
                         </div>
                         <div class="card-body">
-                            @include('layouts.admin.shared.flash')
+                            {{-- @include('layouts.admin.shared.flash') --}}
                             <div class="form-group">
                                 <label>@lang('roles.name_label')</label>
                                 <input type="text" name="name"
                                     class="form-control @error('name') is-invalid @enderror @if (!$errors->has('name') && old('name')) is-valid @endif"
-                                    value="{{ old('name', !empty($role) ? $role->name : null) }}" {{ $disabled ?? '' }}>
+                                    value="{{ old('name', !empty($role) ? $role->name : null) }}"
+                                    {{ $disabled ?? '' }}>
                                 @error('name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -76,4 +70,5 @@
         </div>
         </form>
     </div>
-@endsection
+
+</x-app-layout>

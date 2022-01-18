@@ -1,18 +1,11 @@
-@extends('layouts.admin.dashboard')
+<x-app-layout>
+    <x-slot name="header_content">
+        <h1>Dashboard</h1>
+        <div class="section-header-breadcrumb">
+            {{ Breadcrumbs::render('user-show', $user) }}
+        </div>
+    </x-slot>
 
-@push('styles')
-
-@endpush
-
-@section('page-title')
-    <h1>@lang('users.user_management')</h1>
-@endsection
-
-@section('breadcrumbs')
-    {{ Breadcrumbs::render('user-show', $user) }}
-@endsection
-
-@section('contents')
     <div>
         <h2 class="section-title">@lang('users.user_list')</h2>
         <div class="row">
@@ -22,7 +15,7 @@
                         <h4>@lang('users.user_detail')</h4>
                     </div>
                     <div class="card-body">
-                        @include('layouts.admin.shared.flash')
+                        {{-- @include('layouts.admin.shared.flash') --}}
                         <div class="form-row">
                             <div class="col-md-2">
                                 <Label>Name</Label>
@@ -68,4 +61,5 @@
             </div>
         </div>
     </div>
-@endsection
+
+</x-app-layout>

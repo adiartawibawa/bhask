@@ -1,18 +1,11 @@
-@extends('layouts.admin.dashboard')
+<x-app-layout>
+    <x-slot name="header_content">
+        <h1>Dashboard</h1>
+        <div class="section-header-breadcrumb">
+            {{ Breadcrumbs::render('role-show', $role) }}
+        </div>
+    </x-slot>
 
-@push('styles')
-
-@endpush
-
-@section('page-title')
-    <h1>@lang('roles.role_management')</h1>
-@endsection
-
-@section('breadcrumbs')
-    {{ Breadcrumbs::render('role-show', $role) }}
-@endsection
-
-@section('contents')
     <div>
         <h2 class="section-title">@lang('roles.role_list')</h2>
         <div class="row">
@@ -22,7 +15,7 @@
                         <h4>Role Detail</h4>
                     </div>
                     <div class="card-body">
-                        @include('layouts.admin.shared.flash')
+                        {{-- @include('layouts.admin.shared.flash') --}}
                         <div class="form-row">
                             <div class="col-md-2">
                                 <Label>Name</Label>
@@ -60,4 +53,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>
