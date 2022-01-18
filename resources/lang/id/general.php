@@ -3,7 +3,7 @@
 return [
     'btn_create_label' => 'Buat',
     'btn_edit_label' => 'Edit',
-    'btn_show_label' => 'Tampilkan',
+    'btn_show_label' => 'Lihat',
     'btn_delete_label' => 'Hapus',
     'btn_update_label' => 'Perbaharui',
     'action_label' => 'Aksi',
