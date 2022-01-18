@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header_content">
-        <h1>Dashboard</h1>
+        <h1>@lang('users.user_management')</h1>
         <div class="section-header-breadcrumb">
             {{ Breadcrumbs::render('settings') }}
         </div>
@@ -52,10 +52,10 @@
                                                         <a href="{{ url('admin/users/' . $user->id) }}"
                                                             class="btn btn-sm btn-danger"
                                                             onclick="
-                                                                                                                                    event.preventDefault();
-                                                                                                                                    if (confirm('Do you want to remove this?')) {
-                                                                                                                                        document.getElementById('delete-role-{{ $user->id }}').submit();
-                                                                                                                                    }">
+                                                                                                                                        event.preventDefault();
+                                                                                                                                        if (confirm('Do you want to remove this?')) {
+                                                                                                                                            document.getElementById('delete-role-{{ $user->id }}').submit();
+                                                                                                                                        }">
                                                             <i class="far fa-trash-alt"></i>
                                                             @lang('general.btn_delete_label')
                                                         </a>

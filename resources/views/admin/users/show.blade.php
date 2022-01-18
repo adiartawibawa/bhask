@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header_content">
-        <h1>Dashboard</h1>
+        <h1>@lang('users.user_management')</h1>
         <div class="section-header-breadcrumb">
             {{ Breadcrumbs::render('user-show', $user) }}
         </div>

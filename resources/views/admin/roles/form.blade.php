@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header_content">
-        <h1>Dashboard</h1>
+        <h1>@lang('roles.role_management')</h1>
         <div class="section-header-breadcrumb">
             @if (empty($role))
                 {{ Breadcrumbs::render('role-create') }}
