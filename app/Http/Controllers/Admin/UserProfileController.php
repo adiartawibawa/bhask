@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class UserProfileController extends Controller
 {
     // use Authorizable;
+
     public function __construct()
     {
         parent::__construct();

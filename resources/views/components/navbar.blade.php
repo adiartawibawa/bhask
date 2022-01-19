@@ -29,7 +29,7 @@
                     <i class="far fa-user"></i> Profile
                 </a>
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                    <a href="{{ route('api-tokens.index') }}" class="dropdown-item has-icon">
+                    <a href="{{ route('api-tokens.show') }}" class="dropdown-item has-icon">
                         <i class="fas fa-qrcode"></i> {{ __('API Tokens') }}
                     </a>
                 @endif

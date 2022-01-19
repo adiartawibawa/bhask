@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ApiTokenController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
@@ -40,5 +41,8 @@ Route::group(["middleware" => ['auth', 'verified']], function () {
 
         // Profiles
         Route::get('/profile', [UserProfileController::class, 'show'])->name('profile.show');
+
+        // Api Token
+        Route::get('/api-tokens', [ApiTokenController::class, 'show'])->name('api-tokens.show');
     });
 });

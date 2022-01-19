@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Traits\Authorizable;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
 
-class DashboardController extends Controller
+class ApiTokenController extends Controller
 {
     // use Authorizable;
 
@@ -16,12 +15,14 @@ class DashboardController extends Controller
         parent::__construct();
     }
 
-    public function index()
+    public function show(Request $request)
     {
-        $this->data['currentAdminMenu']  = 'dashboard';
+        view()->share('currentAdminMenu', 'api-token');
 
-        view()->share($this->data);
+        return view('api.index', [
+            'request' => $request,
+            'user' => $request->user()
+        ]);
 
-        return view('admin.dashboard.index');
     }
 }
