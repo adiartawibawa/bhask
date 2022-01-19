@@ -25,9 +25,14 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right">
+                <a href="{{ route('dashboard') }}" class="dropdown-item has-icon">
+                    <i class="fas fa-fire"></i> Dashboard
+                </a>
+
                 <a href="{{ route('profile.show') }}" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
+
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <a href="{{ route('api-tokens.show') }}" class="dropdown-item has-icon">
                         <i class="fas fa-qrcode"></i> {{ __('API Tokens') }}
