@@ -21,6 +21,11 @@
                 <a href="#" class="dropdown-item has-icon">
                     <i class="far fa-user"></i> Profile
                 </a>
+                @if (auth()->user()->hasRole(\App\Models\Role::ADMIN))
+                    <a href="{{route('admin.dashboard')}}" class="dropdown-item has-icon">
+                        <i class="fas fa-bolt"></i> Administrator
+                    </a>
+                @endif
 
                 <div class="dropdown-divider"></div>
                 <form method="POST" action="{{ route('logout') }}">
