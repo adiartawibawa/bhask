@@ -12,9 +12,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
+Route::group(["middleware" => ['auth', 'verified']], function () {
 
-    // User Area 
+    // User Area
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
@@ -30,15 +30,15 @@ Route::group(["middleware" => ['auth:sanctum', 'verified']], function () {
         Route::get('settings', [AdminSetting::class, 'index'])->name('settings.update');
         Route::post('settings', [AdminSetting::class, 'update'])->name('settings.update');
 
-        // Roles and Permissions 
+        // Roles and Permissions
         Route::get('roles/reload-permissions/{id}', [AdminRole::class, 'reloadPermissions'])->name('roles.update');
         Route::get('roles/reload-permissions', [AdminRole::class, 'reloadPermissions'])->name('roles.update');
         Route::resource('roles', AdminRole::class);
 
-        // Users 
+        // Users
         Route::resource('users', AdminUser::class);
 
-        // Profiles 
+        // Profiles
         Route::get('/profile', [UserProfileController::class, 'show'])->name('profile.show');
     });
 });

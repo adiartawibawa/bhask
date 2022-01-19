@@ -210,10 +210,10 @@ return [
     */
 
     'composer' => [
-        'vendor' => 'nwidart',
+        'vendor' => 'bhask',
         'author' => [
-            'name' => 'Nicolas Widart',
-            'email' => 'n.widart@gmail.com',
+            'name' => 'Adi Arta Wibawa',
+            'email' => 'surat.buat.adi@gmail.com',
         ],
     ],
 

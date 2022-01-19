@@ -17,7 +17,7 @@ class DashboardController extends Controller
     {
         $this->data['currentAdminMenu']  = 'dashboard';
 
-        View::share($this->data);
+        view()->share($this->data);
 
         return view('admin.dashboard.index');
     }
