@@ -9,7 +9,7 @@ $activeClass = 'active';
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="{{ route('dashboard') }}">
-                <img class="d-inline-block" width="32px" height="30.61px" src="./images/logo.png" alt="">
+                <img class="d-inline-block" width="32px" height="30.61px" src="/images/logo.png" alt="">
             </a>
         </div>
 
