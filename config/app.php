@@ -17,6 +17,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Description
+    |--------------------------------------------------------------------------
+    |
+    | This value is the description of your application. This value is used when the
+    | framework needs to place the application's description in a notification or
+    | any other location as required by the application or its packages.
+    |
+    */
+
+    'desc' => env('APP_DESC', 'Bhazk Starter Application'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Creator
     |--------------------------------------------------------------------------
     |

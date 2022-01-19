@@ -62,7 +62,7 @@ class Setting extends Model implements HasMedia
                 'setting_type' => 'string',
                 'setting_key' => 'general_app_name',
                 'name' => 'Application Name',
-                'string_value' => 'Laravel Starter',
+                'string_value' => config('app.name'),
                 'validation_rules' => 'required',
             ],
             [
@@ -70,7 +70,7 @@ class Setting extends Model implements HasMedia
                 'setting_type' => 'string',
                 'setting_key' => 'general_app_description',
                 'name' => 'App Description',
-                'string_value' => 'Laravel Starter Application',
+                'string_value' => config('app.desc'),
                 'validation_rules' => '',
             ],
             [
