@@ -2,7 +2,7 @@
     <x-slot name="header_content">
         <h1>@lang('blog::categories.manage_categories')</h1>
         <div class="section-header-breadcrumb">
-            {{ Breadcrumbs::render('posts') }}
+            {{ Breadcrumbs::render('categories') }}
         </div>
     </x-slot>
 

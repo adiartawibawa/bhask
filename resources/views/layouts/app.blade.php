@@ -26,8 +26,8 @@
 <body class="antialiased">
     <div id="app">
         <div class="main-wrapper">
-            @include('components.navbar')
-            @include('components.sidebar')
+            @include('components.admin.navbar')
+            @include('components.admin.sidebar')
 
             <!-- Main Content -->
             <div class="main-content">
@@ -45,6 +45,9 @@
                     </div>
                 </section>
             </div>
+
+            @include('components.admin.footer')
+
         </div>
     </div>
 
