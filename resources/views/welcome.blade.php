@@ -5,12 +5,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{mix('css/landing.css')}}">
+    <link rel="stylesheet" href="{{ mix('css/landing.css') }}">
+
+    @livewireStyles
+
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
 <body>
@@ -19,7 +24,7 @@
         <nav class="container p-6 mx-auto lg:flex lg:justify-between lg:items-center">
             <div class="flex items-center justify-between">
                 <div>
-                    <a class="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300" href="#">Brand</a>
+                    <a class="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300" href="/">{{ config('app.name')}}</a>
                 </div>
 
                 <!-- Mobile menu button -->
@@ -41,19 +46,24 @@
                 <a class="text-gray-700 dark:text-gray-200 lg:px-6 dark:hover:text-blue-400 hover:text-blue-500"
                     href="#">Home</a>
                 <a class="text-gray-700 dark:text-gray-200 lg:px-6 dark:hover:text-blue-400 hover:text-blue-500"
-                    href="#">Components</a>
+                    href="#">Blog</a>
                 <a class="text-gray-700 dark:text-gray-200 lg:px-6 dark:hover:text-blue-400 hover:text-blue-500"
-                    href="#">Pricing</a>
+                    href="#">About</a>
                 <a class="text-gray-700 dark:text-gray-200 lg:px-6 dark:hover:text-blue-400 hover:text-blue-500"
                     href="#">Contact</a>
                 <a class="text-gray-700 dark:text-gray-200 lg:px-6 dark:hover:text-blue-400 hover:text-blue-500"
                 href="#">FAQ</a>
             </div>
 
-            <a class="block h-10 px-5 py-2 mt-4 text-sm text-center text-gray-700 capitalize transition-colors duration-200 transform border rounded-md dark:hover:bg-gray-700 dark:text-white lg:mt-0 hover:bg-gray-100 lg:w-auto"
-                href="#">
-                Contact Us
-            </a>
+            @if (Route::has('login'))
+                <div class="right-0 px-5 py-2 block">
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="text-gray-700 dark:text-gray-200 lg:px-6 dark:hover:text-blue-400 hover:text-blue-500">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}" class="text-gray-700 dark:text-gray-200 lg:px-6 dark:hover:text-blue-400 hover:text-blue-500">Log in</a>
+                    @endauth
+                </div>
+            @endif
         </nav>
 
         <div class="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
@@ -106,6 +116,10 @@
             </div>
         </div>
     </section>
+
+    @stack('modals')
+
+    @livewireScripts
 </body>
 
 </html>
