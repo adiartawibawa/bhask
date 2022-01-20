@@ -21,6 +21,10 @@ mix.autoload({
     .postCss("resources/sass/app.css", "public/css", [
         require("postcss-import"),
         require("tailwindcss"),
+    ])
+    .postCss("resources/sass/landing.css", "public/css", [
+        require("postcss-import"),
+        require("tailwindcss"),
     ]);
 
 if (mix.inProduction()) {

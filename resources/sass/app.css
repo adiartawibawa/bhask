@@ -1,6 +1,6 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 #table_pagination nav>div.hidden>div:nth-child(2)>span span.relative.text-gray-500 {
     background-color: #DB1F48 !important;
